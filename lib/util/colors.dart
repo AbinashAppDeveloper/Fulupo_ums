@@ -15,6 +15,16 @@ class AppColor {
   static const Color bgColor = Color(0xfffef5e9);
   static const Color greyColor = Color.fromARGB(255, 207, 205, 205);
   static const Color buttonColor = Color(0xFFFBC02D);
+  static const LinearGradient greenGradient = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [
+      Color(0xFF749501), // #749501 → dark green
+      Color(0xFF9CC217), // #9CC217 → medium green
+      Color(0xFFBDD95B), // #BDD95B → light green
+    ],
+    stops: [0.0, 0.5, 1.0],
+  );
 
   static const ColorScheme darkColorScheme = ColorScheme.dark(
     // ignore: deprecated_member_use

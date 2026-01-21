@@ -3,12 +3,12 @@ import 'package:fulupo_ums/models/api_validation_model.dart';
 
 
 class AppConstants {
-  static const String appName = 'meatpad';
+  static const String appName = 'Fulupo UMS';
 
   //API URL Constants
   // static const String BASE_URL = 'https://new.dev-healthplanner.xyz/api/'; //Dev
   static const String BASE_URL =
-      "https://tsitfilemanager.in/abinash/meatpad/public/api"; //Prod
+      "https://fulupostore.tsitcloud.com"; //Prod
 
   // static final String BASE_URL = AppConfig.instance.baseUrl;
 

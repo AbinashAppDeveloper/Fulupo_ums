@@ -10,4 +10,5 @@ class LoginUrl {
   final String getProduct = '/masterAdminProducts/get';
   final String addProduct = '/gsm/product';
   final String gsmProduct = '/gsm/getByUser';
+  final String mastercategory= '/masterAdminPdtCat/get-all';
 }

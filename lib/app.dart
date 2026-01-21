@@ -4,7 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fulupo_ums/config/app_theme.dart';
 import 'package:fulupo_ums/flavours.dart';
+import 'package:fulupo_ums/pages/demo/demohomepage.dart';
 import 'package:fulupo_ums/pages/homepage.dart';
+import 'package:fulupo_ums/pages/homepage1.dart';
+import 'package:fulupo_ums/pages/homepage2.dart';
 import 'package:fulupo_ums/pages/loginPage.dart';
 import 'package:fulupo_ums/pages/splash.dart';
 import 'package:fulupo_ums/provider/UserProvider.dart';
@@ -70,7 +73,8 @@ class _MyAppState extends State<MyApp> {
                   debugShowCheckedModeBanner: false,
                   theme: AppThemes(ThemeMode.light).theme,
                   darkTheme: AppThemes(ThemeMode.dark).theme,
-                  themeMode: ThemeMode.light,
+                 // themeMode: ThemeMode.system, // ⭐ KEY LINE
+                   themeMode: ThemeMode.light,
                   home: Splash(),
                 ),
               );

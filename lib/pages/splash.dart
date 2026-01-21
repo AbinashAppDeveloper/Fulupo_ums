@@ -50,7 +50,8 @@ class _SplashState extends State<Splash> {
   }
 
   void _goToHome() {
-    AppRouteName.homepage.pushAndRemoveUntil(context, (route) => false);
+   // AppRouteName.homepage.pushAndRemoveUntil(context, (route) => false);
+    AppRouteName.demohomepage.pushAndRemoveUntil(context, (route) => false);
   }
 
   @override

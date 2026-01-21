@@ -141,13 +141,13 @@ class _MyDrawerState extends State<MyDrawer> {
                           onTap: () {
                             Navigator.pop(context); // Close drawer
                             if (ModalRoute.of(context)?.settings.name != '/') {
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Homepage(),
-                                ),
-                                (route) => false,
-                              );
+                              // Navigator.pushAndRemoveUntil(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => Homepage(),
+                              //   ),
+                              //   (route) => false,
+                              // );
                             }
                           },
                         ),
@@ -312,7 +312,7 @@ class _MyDrawerState extends State<MyDrawer> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  Homepage.submittedProducts.clear();
+                //  Homepage.submittedProducts.clear();
                 });
 
                 Navigator.of(context).pop(); // Close dialog

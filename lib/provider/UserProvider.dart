@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
+import 'package:fulupo_ums/models/MasterCategory_model.dart';
 import 'package:fulupo_ums/models/gsmproductModel.dart';
 import 'package:http/http.dart' as http;
 
@@ -26,6 +27,9 @@ class UserProvider extends ChangeNotifier {
 
   List<Gsmproductmodel> _gsmproducts = [];
   List<Gsmproductmodel> get gsmproducts => _gsmproducts;
+
+  List<MastercategoryModel> _masterCategory =[];
+  List<MastercategoryModel> get masterCategory => _masterCategory;
 
   Future<void> initialFetch() async {
     AppGlobal.deviceInfo = await DeviceInfoServices.getDeviceInfo();
@@ -87,7 +91,7 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
-  // Future<APIResp> fetchStores() async {
+  // Future<APIResp> fetchMasterCategory() async {
   //   print("------------------------ Enter fetchStores");
 
   //   SharedPreferences prfes = await SharedPreferences.getInstance();
@@ -95,7 +99,7 @@ class UserProvider extends ChangeNotifier {
 
   //   try {
   //     final resp = await APIService.get(
-  //       UrlPath.loginUrl.getStore,
+  //       UrlPath.loginUrl.mastercategory,
   //       headers: {
   //         'Authorization': 'Bearer $token',
   //         'Content-Type': 'application/json',
@@ -134,6 +138,68 @@ class UserProvider extends ChangeNotifier {
   //     );
   //   }
   // }
+
+  Future<APIResp> fetchMasterCategory() async {
+  print("--------------------- Enter fetchMasterCategory");
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? token = prefs.getString(AppConstants.token);
+  print("Using token for fetchMasterCategory: $token");
+
+  try {
+    final resp = await APIService.get(
+      UrlPath.loginUrl.mastercategory,
+      params: {},
+      console: true,
+      auth: true,
+      showNoInternet: false,
+      forceLogout: false,
+      timeout: const Duration(seconds: 30),
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    );
+
+    print("Response Status Code: ${resp.statusCode}");
+    print("Response Data--------------->");
+    print(resp.fullBody);
+
+    if (resp.statusCode == 200 && resp.fullBody['data'] != null) {
+      List<dynamic> jsonList = resp.fullBody['data'];
+
+      /// ✅ Convert JSON → Model
+      List<MastercategoryModel> categories =
+          jsonList.map((e) => MastercategoryModel.fromJson(e)).toList();
+
+      /// ✅ Store in provider
+      _masterCategory = categories;
+      notifyListeners();
+
+      return APIResp(
+        status: true,
+        statusCode: resp.statusCode,
+        data: categories,
+        fullBody: resp.fullBody,
+      );
+    } else {
+      throw APIException(
+        type: APIErrorType.auth,
+        message: resp.data?.toString() ?? "Error fetching master categories.",
+      );
+    }
+  } catch (e) {
+    print("❌ Exception in fetchMasterCategory: $e");
+    return APIResp(
+      status: false,
+      statusCode: 500,
+      data: null,
+      fullBody: null,
+    );
+  }
+}
+
 
   Future<APIResp> getStores() async {
     print("--------------------- enter getStores");

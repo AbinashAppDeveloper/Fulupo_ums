@@ -70,7 +70,7 @@ class Styles {
     BuildContext context, {
     Color color = Colors.black,
   }) {
-    return GoogleFonts.dmSans(
+    return GoogleFonts.notoSans(
       color: color,
       fontWeight: FontWeight.bold,
       fontSize: 20,
@@ -81,7 +81,7 @@ class Styles {
     BuildContext context, {
     Color color = const Color.fromARGB(255, 250, 248, 248),
   }) {
-    return GoogleFonts.dmSans(
+    return GoogleFonts.notoSans(
       color: color,
       fontWeight: FontWeight.bold,
       fontSize: 22,
@@ -117,7 +117,7 @@ class Styles {
     return GoogleFonts.dmSans(
       color: color,
       fontWeight: FontWeight.bold,
-      fontSize: 15,
+      fontSize: 16,
     );
   }
 
